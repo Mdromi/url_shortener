@@ -17,7 +17,16 @@ class ShortCode
     end
   
     def self.decode(string)
-      # Implement decoding logic here
+        return nil if string.nil? || string.empty?
+        result = 0
+    
+        string.each_char do |char|
+          index = ALPHABET.index(char)
+          return nil if index.nil? # Invalid character
+          result = result * BASE + index
+        end
+    
+        result
     end
   end
   
