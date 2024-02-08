@@ -4,3 +4,5 @@ rails g model Link url title description image views_count:integer
 bundle add chartkick groupdate
 
 rails g model View link:belongs_to user_agent ip
+
+bin/importmap pin clipboard
