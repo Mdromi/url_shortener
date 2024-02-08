@@ -6,3 +6,7 @@ bundle add chartkick groupdate
 rails g model View link:belongs_to user_agent ip
 
 bin/importmap pin clipboard
+
+//6 Deploying
+Editor="code --wait" bin/rails credentials:edit
+cat config/master.key
