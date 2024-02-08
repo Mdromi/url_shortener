@@ -13,7 +13,11 @@ class LinksController < ApplicationController
     def create
       @link = Link.new(link_params)
       if @link.save
-        redirect_to root_path, notice: "Link has been created successfully."
+        respond_to do |format|
+          format.html {redirect_to root_path, notice: "Link has been created successfully."}
+          format.turbo_stream {render turbo_stream: turbo_stream.prepend("links",@link)}
+        end
+        
       else
         index
         render :index, status: :unprocessable_entity
