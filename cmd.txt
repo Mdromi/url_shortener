@@ -10,3 +10,11 @@ bin/importmap pin clipboard
 //6 Deploying
 Editor="code --wait" bin/rails credentials:edit
 cat config/master.key
+
+/Auth
+bundle add devise
+rails g devise:install
+rails g devise:views // not required
+rails g devise User
+rails g migration AddUserIdToLinks user_id:integer
+rails db:migrate
