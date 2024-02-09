@@ -10,9 +10,9 @@ class Link < ApplicationRecord
     after_save_commit if: :url_previously_changed? do
       MetadataJob.perform_later(to_param)
     end
-  
-    def self.find(id)
-      super(ShortCode.decode(id))
+
+    def self.find_by_short_code(code)
+        find ShortCode.decode(code)
     end
   
     def to_param
