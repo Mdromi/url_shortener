@@ -1,7 +1,7 @@
-<h1> Edit Link </h1>
-<%= render partial: "form", locals: {link: @link}%>
-<div class="flex gap-1 items-center">
-  <%= link_to "Cancel", @link%>
-  or
-  <%= button_to "Delete", @link, method: :delete, data: {turbo_confirm: "Are you sure}"}%>
+<h1 class="text-xl font-bold mb-4">Edit Link</h1>
+<%= render partial: "form", locals: { link: @link } %>
+<div class="flex items-center mt-4">
+  <%= link_to "Cancel", @link, class: "text-blue-500 hover:underline" %>
+  <span class="mx-2 text-gray-500">or</span>
+  <%= button_to "Delete", @link, method: :delete, class: "text-red-500 hover:underline", data: { turbo_confirm: "Are you sure?" } %>
 </div>

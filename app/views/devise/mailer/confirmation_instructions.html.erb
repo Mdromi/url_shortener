@@ -1,0 +1,7 @@
+<div class="py-6">
+  <p class="text-lg font-medium text-center mb-4">Welcome <%= @email %>!</p>
+  <p class="text-sm text-gray-600 text-center mb-4">You can confirm your account email through the link below:</p>
+  <p class="text-center">
+    <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "text-indigo-600 hover:underline" %>
+  </p>
+</div>

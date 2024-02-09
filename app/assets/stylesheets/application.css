@@ -13,3 +13,84 @@
  *= require_tree .
  *= require_self
  */
+
+.pagy-nav,
+.pagy-nav-js {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagy-nav .page{
+    margin-right: 5px;
+}
+
+.pagy-nav.last-child{
+    margin-right: 0;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.page.gap,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  display: block;
+  border-radius: 0.375rem;
+  padding: .5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4b5563;
+  background-color: #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  color: #9ca3af;
+  cursor: default;
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  color: #ffffff;
+  cursor: default;
+  background-color: #6b7280;
+}
+
+.pagy-combo-nav-js {
+  display: flex;
+  max-width: max-content;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4b5563;
+  background-color: #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagy-combo-nav-js .pagy-combo-input {
+  background-color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.pagy-combo-nav-js .page.prev,
+.pagy-combo-nav-js .page.next {
+  &:hover {
+    color: #4b5563;
+  }
+}
+
+.pagy-combo-nav-js .page.prev.disabled,
+.pagy-combo-nav-js .page.next.disabled {
+  color: #9ca3af;
+  cursor: default;
+}
