@@ -25,8 +25,12 @@ class Link < ApplicationRecord
 
     # Return false if no user_id on Link
     # Return true if user.id matches user_id on Link
+    # Return true if the user is an admin
     def editable_by?(user)
-      user_id? && (user_id == user&.id)
-    end    
+      return false unless user.present?
+      return true if user.admin?
+      user_id? && (user_id == user.id)
+    end
+     
   end
   

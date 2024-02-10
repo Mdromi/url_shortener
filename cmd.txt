@@ -21,3 +21,7 @@ rails db:migrate
 
 // Test
 rails g integration_test link
+
+
+// For Admin
+rails generate migration AddAdminToUsers admin:boolean

@@ -29,6 +29,7 @@ class LinksTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
  end
 
+
  test "create link as guest" do 
     assert_difference "Link.count" do 
       post links_path(format: :turbo_stream), params: {link: {url: "https://gorails.com"}}
@@ -75,4 +76,48 @@ end
   get edit_link_path(links(:anonymous))
   assert_response :redirect
  end
+
+#  For Admin
+test "admin can edit any link" do
+  sign_in users(:admin)
+  get edit_link_path(links(:one))
+  assert_response :ok
+end
+
+test "admin can delete any link" do
+  sign_in users(:admin)
+  assert_difference "Link.count", -1 do
+    delete link_path(links(:one))
+    assert_response :redirect
+  end
+end
+
+test "admin can edit any user's link" do
+  sign_in users(:admin)
+  get edit_link_path(links(:one))
+  assert_response :ok
+end
+
+test "admin can delete any user's link" do
+  sign_in users(:admin)
+  assert_difference "Link.count", -1 do
+    delete link_path(links(:two))
+    assert_response :redirect
+  end
+end
+
+test "admin can edit anonymous link" do
+  sign_in users(:admin)
+  get edit_link_path(links(:anonymous))
+  assert_response :ok
+end
+
+test "admin can delete anonymous link" do
+  sign_in users(:admin)
+  assert_difference "Link.count", -1 do
+    delete link_path(links(:anonymous))
+    assert_response :redirect
+  end
+end
+
 end

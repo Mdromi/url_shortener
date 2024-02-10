@@ -14,4 +14,11 @@ class UsersTest < ActionDispatch::IntegrationTest
         assert_select "a", "Profile"
         assert_select "button", "Logout"
     end
+
+    test "admin user can be logged in" do
+        sign_in users(:admin)
+        get links_path
+        assert_match "Dashboard", response.body
+        assert_select "button", "Logout"
+    end
 end

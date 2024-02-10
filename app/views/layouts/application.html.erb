@@ -24,6 +24,7 @@
         <div class="flex items-center gap-4">
           <% if user_signed_in? %>
             <%= link_to 'Profile', edit_user_registration_path, class: "text-gray-600 hover:text-gray-800" %>
+            <%= link_to 'Dashboard', root_path, class: "text-gray-600 hover:text-gray-800" if current_user.admin? %>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "text-white bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800" %>
           <% else %>
             <%= link_to 'Sign Up', new_user_registration_path, class: "text-gray-600 hover:text-gray-800 mr-4" %>
