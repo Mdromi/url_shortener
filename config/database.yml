@@ -78,15 +78,15 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 
-# production:
-#   <<: *default
-#   database: url_shortener_production
-#   username: url_shortener
-#   password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
+production:
+  <<: *default
+  database: url_shortener_production
+  username: url_shortener
+  password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV["POSTGRES_HOST"] %>
-  user: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   host: <%= ENV["POSTGRES_HOST"] %>
+#   user: <%= ENV["POSTGRES_USER"] %>
+#   password: <%= ENV["POSTGRES_PASSWORD"] %>
