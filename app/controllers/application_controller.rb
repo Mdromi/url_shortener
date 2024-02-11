@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
         @link = Link.find_by_short_code(params[:id])
     end
 
-    def paginate_links(links)
-        pagy, paginated_links = pagy(links)
-        [pagy, paginated_links]
+    def paginate_resource(resource)
+        pagy, paginated_resource = pagy(resource)
+        [pagy, paginated_resource]
     end
 end

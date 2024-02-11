@@ -4,7 +4,7 @@ class LinksController < ApplicationController
     before_action :check_if_editable, only: [:edit, :update, :destroy]
 
     def index
-      @pagy, @links = paginate_links(@links)
+      @pagy, @links = paginate_resource(@links)
       @link ||= Link.new
       rescue Pagy::OverflowError
         redirect_to root_path

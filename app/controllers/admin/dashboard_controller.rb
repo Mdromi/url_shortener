@@ -8,16 +8,19 @@ class Admin::DashboardController < ApplicationController
         @registered_users_amount = registered_users_amount
         @guest_users_amount = guest_users_amount
         @all_users_amount = all_users_amount
-        @pagy, @links = paginate_links(get_all_links)
     end
 
     def show 
-      @pagy, @links = pagy(@links)
+    end
+
+    def links 
+      @pagy, @links = paginate_resource(@links)
     end
   
     def users
-        @users = User.all
+      @pagy, @users = paginate_resource(User.order(created_at: :desc))
     end
+    
   
     def guest_users
     end
