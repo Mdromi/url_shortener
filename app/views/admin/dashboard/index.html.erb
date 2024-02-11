@@ -1,0 +1,10 @@
+<div class="border-t border-gray-300 py-6">
+  <%= render 'menu' %>
+  <h1>Dashboard</h1>
+  <p>Registered Users Amount: <%= registered_users_amount %></p>
+  <p>Guest Users Amount: <%= guest_users_amount %></p>
+  <p>All Users Amount: <%= all_users_amount %></p>
+  <%= pie_chart [["Guest Users #{guest_users_amount}", guest_users_amount], ["Registered Users #{registered_users_amount}", registered_users_amount]] %>
+  <h1>Users Chart</h1>
+  <%==line_chart user_signups_data(7), download: true %>
+</div>

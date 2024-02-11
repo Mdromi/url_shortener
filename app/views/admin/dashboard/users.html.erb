@@ -1,0 +1,24 @@
+<div class="border-t border-gray-300 py-6">
+  <%= render 'menu' %>
+  <h1 class="text-lg font-semibold">Users</h1>
+</div>
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+        <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Total Links</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Profile</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @users.each do |user| %>
+        <tr class="hover:bg-gray-100">
+          <td class="px-6 py-4 whitespace-nowrap"><%= user.email %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-center"><%= find_links_by_user_id(user.id).count %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= link_to 'View Profile', profile_path(user), class: 'text-blue-500 hover:underline' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

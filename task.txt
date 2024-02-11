@@ -1,0 +1,23 @@
+- Dashboard
+    - all users ammount
+    - register users ammount
+    - guest usrs ammount
+    - all users diagram
+    - web visiting ammount,time,duration diagram
+    - total links ammount
+    - guest,users,admin links show on the diagram,
+
+- Users
+    - Show the all users
+    - User total created links ammount, ip,
+    - vigit the singe user profile, 
+        - show the users all links
+        - edit the links option
+        - avargae view all the links show on the diagram
+    - destroy the users option
+
+- Guest User
+     - Show the all guest users
+     - show the ip
+
+      Link.where(user_id: nil)

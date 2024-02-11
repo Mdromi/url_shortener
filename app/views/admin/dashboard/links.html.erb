@@ -1,0 +1,34 @@
+<div class="border-t border-gray-300 py-6">
+  <%= render 'menu' %>
+  <h1 class="text-lg font-semibold">Links</h1>
+</div>
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Views</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Copy Link</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @links.each do |link| %>
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <%= render partial: 'shared/link_component', locals: { link: link, view_path: view_path(link), title_length: 20, description_length: 30 } %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= link_to pluralize( link.views_count, "views"), link, class: "px-1 py-1 text-sm rounded bg-gray-100 no-underline" %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= button_tag "Copy", class: "text-sm px-1 py-1 rounded bg-gray-100 no-underline", data: {controller: "clipboard", clipboard_text: view_url(link)} %></td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <% if link.user_id.present? %>
+              <%= link_to link.user.email, profile_path(link.user), class: "text-blue-500 hover:underline" %>
+            <% else %>
+              Guest User
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

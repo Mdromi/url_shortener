@@ -1,9 +1,10 @@
 class LinksController < ApplicationController
+    before_action :get_all_links, only: [:index]
     before_action :set_link, only: [:show, :edit, :update, :destroy]
     before_action :check_if_editable, only: [:edit, :update, :destroy]
 
     def index
-      @pagy, @links = pagy Link.recent_first
+      @pagy, @links = paginate_links(@links)
       @link ||= Link.new
       rescue Pagy::OverflowError
         redirect_to root_path
@@ -14,7 +15,7 @@ class LinksController < ApplicationController
     end
 
     def create
-      @link = Link.new(link_params.with_defaults(user: current_user))
+      @link = Link.new(link_params.merge(ip_address: request.remote_ip).with_defaults(user: current_user))
     
       if @link.save
         respond_to do |format|
@@ -26,6 +27,7 @@ class LinksController < ApplicationController
         render :index, status: :unprocessable_entity
       end
     end
+    
     
     def update
       if @link.update(link_params)

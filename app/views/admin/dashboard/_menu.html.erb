@@ -1,0 +1,16 @@
+<div class="flex justify-center">
+  <ul class="flex space-x-4">
+    <li class="px-4 py-2">
+      <%= link_to 'Dashboard', admin_dashboard_path, class: "block #{'border-b-2 border-gray-400 font-bold' if current_page?(admin_dashboard_path)}" %>
+    </li>
+    <li class="px-4 py-2">
+      <%= link_to 'Users', admin_dashboard_users_path, class: "block #{'border-b-2 border-gray-400 font-bold' if current_page?(admin_dashboard_users_path)}" %>
+    </li>
+    <li class="px-4 py-2">
+      <%= link_to 'Links', admin_link_lists_path, class: "block #{'border-b-2 border-gray-400 font-bold' if current_page?(admin_link_lists_path)}" %>
+    </li>
+    <li class="px-4 py-2">
+      <%= link_to 'Guest Users', admin_dashboard_guest_users_path, class: "block #{'border-b-2 border-gray-400 font-bold' if current_page?(admin_dashboard_guest_users_path)}" %>
+    </li>
+  </ul>
+</div>
