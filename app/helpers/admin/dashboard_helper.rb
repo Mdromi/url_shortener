@@ -8,7 +8,7 @@ module Admin::DashboardHelper
         Link.where(user_id: user_id)
     end
     
-    def guest_users_amount
+    def guest_user_links_amount
         count_guest_user = 0
         link_user_hashmap = {}
         @links.each do |link|
@@ -36,6 +36,6 @@ module Admin::DashboardHelper
 
     
     def all_users_amount
-        guest_users_amount + registered_users_amount
+        guest_user_links_amount + registered_users_amount
     end
 end

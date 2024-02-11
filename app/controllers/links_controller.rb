@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-    before_action :get_all_links, only: [:index]
+    before_action :get_all_links
     before_action :set_link, only: [:show, :edit, :update, :destroy]
     before_action :check_if_editable, only: [:edit, :update, :destroy]
 

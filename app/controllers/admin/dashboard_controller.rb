@@ -6,7 +6,7 @@ class Admin::DashboardController < ApplicationController
   
     def index
         @registered_users_amount = registered_users_amount
-        @guest_users_amount = guest_users_amount
+        @guest_user_links_amount = guest_user_links_amount
         @all_users_amount = all_users_amount
     end
 
@@ -22,7 +22,7 @@ class Admin::DashboardController < ApplicationController
     end
     
   
-    def guest_users
+    def guest_user_links
     end
   
     def destroy_user

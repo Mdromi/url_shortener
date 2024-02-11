@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
     get 'dashboard/users', to: 'dashboard#users', as: 'dashboard_users'
     get 'dashboard/links', to: 'dashboard#links', as: 'link_lists'
-    get 'dashboard/guest_users', to: 'dashboard#guest_users', as: 'dashboard_guest_users'
+    get 'dashboard/guest_user_links', to: 'dashboard#guest_user_links', as: 'dashboard_guest_user_links'
   end
   
   
