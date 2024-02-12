@@ -55,9 +55,13 @@ This is a URL Shortener web application that allows users to shorten URLs and tr
 
 1. Clone the repository (`git clone https://github.com/Mdromi/url_shortener`).
 2. Install Ruby and Rails dependencies (`bundle install`).
-3. Set up the database (`rails db:setup`).
-4. Start the Rails server (`rails server`).
-5. Visit `http://localhost:3000` in your web browser.
+3. Set up the database (`rails db:setup`). This will create the database, load the schema, and initialize it with seed data.
+4. Set up the database (`rails db:setup`).
+5. Start the Rails server (`rails server`).
+6. Visit `http://localhost:3000` in your web browser.
+7. To login to the admin dashboard, use the following credentials:
+   - Email: admin@example.com
+   - Password: password
 
 ## Usage
 
