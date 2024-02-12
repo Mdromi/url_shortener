@@ -15,6 +15,10 @@
         <h2 class="text-lg leading-6 font-medium text-gray-900">Users Chart (Last 7 Days)</h2>
         <%== line_chart user_signups_data(7), download: true, height: '300px' %>
       </div>
+      <div class="mt-10">
+        <h2 class="text-lg leading-6 font-medium p-4 text-gray-900">All Links Views (Last 2 weeks)</h2>
+        <%= line_chart @link_views_data, library: { title: { text: 'Total Views of All Links per Day' } } %>
+      </div>
     </dl>
   </div>
 </div>

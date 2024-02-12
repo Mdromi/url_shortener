@@ -5,10 +5,23 @@ class Admin::DashboardController < ApplicationController
     before_action :authorize_admin!    # Ensure user is authorized as an admin
   
     def index
-        @registered_users_amount = registered_users_amount
-        @guest_user_links_amount = guest_user_links_amount
-        @all_users_amount = all_users_amount
+      @registered_users_amount = registered_users_amount
+      @guest_user_links_amount = guest_user_links_amount
+      @all_users_amount = all_users_amount
+      @links ||= Link.all
+    
+      # Initialize a hash to store total views for each day
+      @link_views_data = Hash.new(0)
+    
+      # Iterate over each link and aggregate views for each day
+      @links.each do |link|
+        link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count.each do |day, views|
+          @link_views_data[day] += views
+        end
+      end
     end
+    
+    
 
     def show 
     end
