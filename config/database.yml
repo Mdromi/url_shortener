@@ -82,4 +82,3 @@ production:
   database: url_shortener_production
   username: url_shortener
   password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
