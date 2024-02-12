@@ -39,7 +39,8 @@ class LinksController < ApplicationController
     
     def destroy
       @link.destroy
-      redirect_to root_path, notice: "Link has been deleted successfully."
+      redirect_url = params[:redirect_to] == 'current_page' ? request.referer : root_path
+      redirect_to redirect_url, notice: "Link has been deleted successfully."
     end
     
 

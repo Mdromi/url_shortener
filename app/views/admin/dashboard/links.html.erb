@@ -14,7 +14,7 @@
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
       <% @links.each do |link| %>
-        <tr>
+        <tr class="hover:bg-gray-50 transition-colors duration-300">
           <td class="px-6 py-4 whitespace-nowrap">
             <%= render partial: 'shared/link_component', locals: { link: link, view_path: view_path(link), title_length: 20, description_length: 30 } %>
           </td>

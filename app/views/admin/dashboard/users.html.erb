@@ -13,7 +13,7 @@
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
       <% @users.each do |user| %>
-        <tr class="hover:bg-gray-100">
+        <tr class="hover:bg-gray-50 transition-colors duration-300">
           <td class="px-6 py-4 whitespace-nowrap"><%= user.email %></td>
           <td class="px-6 py-4 whitespace-nowrap text-center"><%= find_links_by_user_id(user.id).count %></td>
           <td class="px-6 py-4 whitespace-nowrap"><%= link_to 'View Profile', profile_path(user), class: 'text-blue-500 hover:underline' %></td>

@@ -23,7 +23,9 @@ class Admin::DashboardController < ApplicationController
     
   
     def guest_user_links
+      @pagy, @guest_user_links = paginate_resource(Link.where(user_id: nil).order(created_at: :desc))
     end
+    
   
     def destroy_user
       user = User.find(params[:id])
