@@ -1,10 +1,20 @@
-<div class="border-t border-gray-300 py-6">
-  <%= render 'menu' %>
-  <h1>Dashboard</h1>
-  <p>Registered Users Amount: <%= registered_users_amount %></p>
-  <p>Guest User Links Amount: <%= guest_user_links_amount %></p>
-  <p>All Users Amount: <%= all_users_amount %></p>
-  <%= pie_chart [["Guest Users #{guest_user_links_amount}", guest_user_links_amount], ["Registered Users #{registered_users_amount}", registered_users_amount]] %>
-  <h1>Users Chart</h1>
-  <%==line_chart user_signups_data(7), download: true %>
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <%= render 'menu' %>
+    <p class="mt-1 max-w-2xl text-center text-sm text-gray-500">Summary of user activity</p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-white px-4 py-5">
+        <h2 class="text-lg leading-6 font-medium text-gray-900">All Users Ratio</h2>
+        <%= pie_chart [["Registered Users #{registered_users_amount}", registered_users_amount], ["Guest Users #{guest_user_links_amount}", guest_user_links_amount], ["Total Users #{all_users_amount}"]],  
+               height: '300px',
+               colors: ['#3B82F6', '#22C55E', '#EAB308'] %>
+      </div>
+      <div class="bg-gray-50 px-4 py-5">
+        <h2 class="text-lg leading-6 font-medium text-gray-900">Users Chart (Last 7 Days)</h2>
+        <%== line_chart user_signups_data(7), download: true, height: '300px' %>
+      </div>
+    </dl>
+  </div>
 </div>
