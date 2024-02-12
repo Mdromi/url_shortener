@@ -28,11 +28,29 @@ module Admin::DashboardHelper
         guest_user_counts = Link.where(user_id: nil, created_at: start_date..end_date).group_by_day(:created_at).count
         
         cumulative_user_counts = user_counts.transform_values.with_index { |count, index| user_counts.values[0..index].sum }
-        cumulative_guest_user_counts = guest_user_counts.transform_values.with_index { |count, index| guest_user_counts.values[0..index].sum }
+        
+        cumulative_guest_user_counts = guest_user_counts.transform_values.with_index do |count, index|
+          previous_dates = guest_user_counts.keys[0..index]
+          unique_guest_users = 0
+          link_user_hashmap = {}
+          
+          previous_dates.each do |date|
+            links = Link.where(user_id: nil, created_at: date.beginning_of_day..date.end_of_day)
+            links.each do |link|
+              if link.ip_address.nil? || !link_user_hashmap[link.ip_address]
+                unique_guest_users += 1
+                link_user_hashmap[link.ip_address] = true if link.ip_address
+              end
+            end
+          end
+          
+          unique_guest_users
+        end
         
         # Merge both user and guest user counts
         cumulative_counts = cumulative_user_counts.merge(cumulative_guest_user_counts) { |date, users, guests| users + guests }
     end
+    
 
     
     def all_users_amount
