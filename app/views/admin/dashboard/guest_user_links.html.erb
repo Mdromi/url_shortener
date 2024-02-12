@@ -3,35 +3,5 @@
     <%= render 'menu' %>
     <p class="mt-1 max-w-2xl text-center text-sm text-gray-500">Summary of all guest links</p>
   </div>
-  <div class="overflow-x-auto">
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">IP Address</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Copy Link</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
-        <% @guest_user_links.each do |link| %>
-          <tr class="hover:bg-gray-50 transition-colors duration-300">
-            <td class="px-6 py-4 whitespace-nowrap"><%= link.ip_address %></td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <%= render partial: 'shared/link_component', locals: { link: link, view_path: view_path(link), title_length: 20, description_length: 30 } %>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap"><%= link_to pluralize(link.views_count, "view"), link, class: "px-1 py-1 text-sm rounded bg-gray-100 no-underline" %></td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <%= button_tag "Copy", class: "text-sm px-1 py-1 rounded bg-gray-100 no-underline", data: { controller: "clipboard", clipboard_text: view_url(link) } %>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <%= button_to "Delete", link, method: :delete, class: "text-red-500 hover:underline", data: { turbo_confirm: "Are you sure?" }, params: { redirect_to: request.original_url } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
-  </div>
+  <%= render partial: 'shared/links_table', locals: { links: @guest_user_links, pagy: @pagy } %>
 </div>

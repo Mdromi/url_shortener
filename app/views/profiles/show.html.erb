@@ -1,4 +1,40 @@
-<!-- app/views/users/show.html.erb -->
-<h1>User Profile</h1>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<!-- Add more user information as needed -->
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <p class="mt-1 max-w-2xl text-center text-sm text-gray-500">User Profile</p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500 flex items-center">
+          <span class="inline-block w-2 h-2 rounded-full bg-blue-500 mr-2"></span><strong>Email</strong>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"> <%= @user.email %></dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500 flex items-center">
+          <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span><strong>IP</strong>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @user_links.last&.ip_address %></dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500 flex items-center">
+          <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mr-2"></span><strong>Total Links</strong>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @user_links.count %></dd>
+      </div>
+    </dl>
+  </div>
+  <% if @user_links.present? %>
+    <div class="mt-10">
+      <h2 class="text-lg leading-6 font-medium p-4 text-gray-900">All Links Views(Last 2 weeks)</h2>
+      <% views_counts = @user_links.joins(:views).group_by_day('views.created_at', range: 2.weeks.ago..Time.now, expand_range: true).count %>
+      <%= line_chart views_counts %>
+    </div>
+    <div class="mt-10">
+      <h2 class="text-lg leading-6 font-medium p-4 text-gray-900">All Links</h2>
+      <%= render partial: 'shared/links_table', locals: { links: @user_links, pagy: @pagy } %>
+    </div>
+  <% else %>
+    <p class="mt-4 text-center py-4 text-gray-500">This user has no links.</p>
+  <% end %>
+</div>
