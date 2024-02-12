@@ -4,6 +4,13 @@
 
 This is a URL Shortener web application that allows users to shorten URLs and track their views over time. It also provides administrative functionalities for managing users, links, and guest users.
 
+## Project Video
+
+Check out a demo of the project in action on YouTube:
+
+[![Project Video](https://img.youtube.com/vi/Kg9m-18-2is/0.jpg)](https://youtu.be/Kg9m-18-2is)
+
+
 ## Features
 
 ### User Features
@@ -23,23 +30,19 @@ This is a URL Shortener web application that allows users to shorten URLs and tr
 ### Admin Features
 
 - **Dashboard**
-    - Show all registered users and guest users on a diagram.
-    - Users Chart (Last 7 Days).
-    - All Links Views (Last 2 weeks).
+    - View diagrams displaying all registered users and guest users.
+    - See a chart of user activity over the last 7 days.
+    - Track all links' views over the past 2 weeks.
 
-- **Users**
-    - Show the list of all users.
-        - Display the total number of links created by each user.
-    - View user profiles.
-        - Display basic information about the user.
-        - Show all links views for the last 2 weeks.
-        - Display all links created by the user.
-        - Edit links as an admin.
-    - Destroy or edit users and links.
+- **Users Management**
+    - View a list of all users, along with the total number of links each user has created.
+    - Access user profiles to see basic information, recent link views, and links created.
+    - Edit links on behalf of users.
+    - Delete or edit users and their links.
 
-- **Guest User**
-    - Show the list of all guest users.
-    - Show their IP addresses.
+- **Guest Users**
+    - View a list of all guest users.
+    - See the IP addresses associated with each guest user.
 
 ## Technologies Used
 
